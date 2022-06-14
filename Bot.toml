@@ -1,0 +1,5 @@
+[pg]
+user = "millie"
+password = "millie"
+host = "localhost"
+db = "millie"

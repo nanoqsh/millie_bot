@@ -1,8 +1,14 @@
-use sea_orm::{Database, DatabaseConnection};
+mod config;
+
+use self::config::Config;
+use sea_orm::Database;
 
 #[tokio::main]
 async fn main() {
-    let conn: DatabaseConnection = Database::connect("postgres://millie:millie@0.0.0.0/millie")
+    let config = Config::load();
+
+    let connection_string = config.pg.connection_string();
+    let conn = Database::connect(&connection_string)
         .await
         .expect("connect");
 
