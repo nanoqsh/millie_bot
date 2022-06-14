@@ -1,0 +1,3 @@
+[tasks.pg]
+command = "docker-compose"
+args = ["up", "--remove-orphans"]
