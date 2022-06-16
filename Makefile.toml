@@ -1,3 +1,8 @@
+[tasks.create_data]
+command = "mkdir"
+args = ["-p", "data"]
+
 [tasks.pg]
 command = "docker-compose"
 args = ["up", "--remove-orphans"]
+dependencies = ["create_data"]

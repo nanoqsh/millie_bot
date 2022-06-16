@@ -1,6 +1,7 @@
 mod config;
 
 use self::config::Config;
+use migration::{Migrator, MigratorTrait};
 use sea_orm::Database;
 
 #[tokio::main]
@@ -17,4 +18,6 @@ async fn main() {
         .expect("connect");
 
     println!("{conn:?}");
+
+    Migrator::up(&conn, None).await.expect("up");
 }

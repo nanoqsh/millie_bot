@@ -9,5 +9,7 @@ services:
       PGDATA: /data
     volumes:
       - ./data:/data
+      - /etc/passwd:/etc/passwd:ro
     ports:
       - 5432:5432
+    user: 1000:1000
