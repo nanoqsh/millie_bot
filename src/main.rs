@@ -5,8 +5,12 @@ use sea_orm::Database;
 
 #[tokio::main]
 async fn main() {
-    let config = Config::load();
+    tracing_subscriber::fmt()
+        .with_max_level(tracing::Level::DEBUG)
+        .with_test_writer()
+        .init();
 
+    let config = Config::load();
     let connection_string = config.pg.connection_string();
     let conn = Database::connect(&connection_string)
         .await
